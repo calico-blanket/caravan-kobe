@@ -48,6 +48,17 @@ figcaption{margin-top:8px}
 
 details a img,details a svg,details>img,details>svg{width:100%;max-width:100%;max-height:420px;height:auto;object-fit:contain;display:block}
 details{padding:2px 0}
+
+/* 固定表示の柱（現在位置バー） */
+#location-bar{position:sticky;top:0;z-index:10;background:#0a4a52;color:white;padding:10px 44px;font-size:15px;font-weight:bold;display:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+#location-bar.is-visible{display:block}
+#location-bar .prefix{font-size:12px;color:#9dd1d5;margin-right:10px;letter-spacing:.05em}
+@media(max-width:650px){
+  #location-bar{padding:8px 18px;font-size:14px}
+}
+
+/* スクリーンリーダー専用テキスト */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b86d00;outline-offset:3px}
 @media(max-width:650px){
   header{padding:14px 18px;gap:12px}
@@ -77,6 +88,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 </nav>
 
 <div id="guide-participant" role="tabpanel" aria-labelledby="tab-participant" data-tab-panel="participant">
+
+<div id="location-bar" role="status" aria-live="polite" aria-label="現在の位置"><span class="prefix">現在の案内</span><span id="location-bar-text"></span></div>
 
 <section class="intro">
   <label>参加者向け ／ 地下街を通る経路（地上を歩くルートとは別のご案内です）</label>
@@ -133,7 +146,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   <p class="note">※このプロトタイプは JR三ノ宮、阪神 神戸三宮、阪急 神戸三宮、新神戸・地下鉄 三宮、神戸空港（ポートライナー）・他市バス の5経路で確認できます。海岸線 三宮・花時計前からのご案内は用意していません。</p>
 </section>
 
-<section aria-labelledby="section-station-route">
+<section aria-labelledby="section-station-route" data-location-section="station">
   <h2 id="section-station-route"><em>02</em><span data-station-name>阪神 神戸三宮</span>から、さんちかへ</h2>
 
   <!-- JR三ノ宮 -->
@@ -298,9 +311,11 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   </div>
 </section>
 
-<section>
+<section data-location-section="common">
   <h2><em>03</em>さんちかから、三宮研修センターへ（全駅共通）</h2>
-  <p class="note">ここから先はどの駅から来ても同じ道順です。</p>
+  <details>
+    <summary style="cursor:pointer;font-weight:bold;font-size:17px;padding:14px 18px;background:#eaf6f7;border-left:5px solid #00828b;border-radius:4px">さんちか → 神戸国際会館 → フラワーロード → 研修センターの3ステップを開く<span class="sr-only">（ここから先はどの駅から来ても同じ道順です。3つのステップを含みます）</span></summary>
+    <p class="note" style="margin-top:14px">ここから先はどの駅から来ても同じ道順です。</p>
 
   <ol class="journey">
 
@@ -341,6 +356,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     </li>
 
   </ol>
+  </details>
 </section>
 
 <footer style="padding:32px 44px;background:#f0f5f8">
@@ -460,6 +476,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       p.hidden = p.dataset.panel !== station;
     });
     nameEls.forEach(el => { el.textContent = stationNames[station] || ''; });
+    // 柱の表示中なら、テキストも更新
+    if (typeof updateLocationBarText === 'function' && currentSection) updateLocationBarText();
   }
   stButtons.forEach(b => b.addEventListener('click', () => showStation(b.dataset.station)));
   const initialStation = document.querySelector('.stations button[aria-pressed="true"][data-station]');
@@ -479,8 +497,58 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     });
     // タブ切替時はページ上部にスクロール
     window.scrollTo({ top: 0, behavior: 'auto' });
+    // 柱を非表示にリセット
+    hideLocationBar();
   }
   tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+
+  // 現在位置バー（柱）の制御
+  const locationBar = document.getElementById('location-bar');
+  const locationText = document.getElementById('location-bar-text');
+  const sections = document.querySelectorAll('[data-location-section]');
+  let currentSection = null;
+  function updateLocationBarText(){
+    if (!currentSection) { hideLocationBar(); return; }
+    const type = currentSection.dataset.locationSection;
+    let text = '';
+    if (type === 'station') {
+      const stName = stationNames[document.querySelector('.stations button[aria-pressed="true"][data-station]')?.dataset.station] || '';
+      text = `${stName} → さんちか`;
+    } else if (type === 'common') {
+      text = 'さんちか → 三宮研修センター';
+    }
+    locationText.textContent = text;
+    locationBar.classList.add('is-visible');
+  }
+  function hideLocationBar(){
+    currentSection = null;
+    locationBar.classList.remove('is-visible');
+  }
+  if ('IntersectionObserver' in window && sections.length) {
+    const observer = new IntersectionObserver((entries) => {
+      // 見えているセクションのうち、いちばん上にあるものを採用
+      const visible = entries.filter(e => e.isIntersecting).map(e => e.target);
+      if (visible.length) {
+        // 見えているセクションの中で、一番上にあるものを取得
+        visible.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
+        currentSection = visible[0];
+        updateLocationBarText();
+      } else {
+        // どのセクションも交差していない場合、直近まで見えていたものが上にスクロールされたか下にスクロールされたか判断
+        const anyBelow = Array.from(sections).some(s => s.getBoundingClientRect().top > window.innerHeight);
+        const anyAbove = Array.from(sections).some(s => s.getBoundingClientRect().bottom < 0);
+        if (anyAbove && !anyBelow) {
+          // 全てのセクションが上に流れた → 最後のセクション（共通）の位置
+          currentSection = sections[sections.length - 1];
+          updateLocationBarText();
+        } else if (anyBelow && !anyAbove) {
+          // まだセクションに入っていない → 非表示
+          hideLocationBar();
+        }
+      }
+    }, { rootMargin: '-80px 0px -50% 0px', threshold: 0 });
+    sections.forEach(s => observer.observe(s));
+  }
 })();
 </script>
 </body></html>
