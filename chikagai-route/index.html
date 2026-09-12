@@ -49,14 +49,6 @@ figcaption{margin-top:8px}
 details a img,details a svg,details>img,details>svg{width:100%;max-width:100%;max-height:420px;height:auto;object-fit:contain;display:block}
 details{padding:2px 0}
 
-/* 固定表示の柱（現在位置バー） */
-#location-bar{position:sticky;top:0;z-index:10;background:#0a4a52;color:white;padding:10px 44px;font-size:15px;font-weight:bold;display:none;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-#location-bar.is-visible{display:block}
-#location-bar .prefix{font-size:12px;color:#9dd1d5;margin-right:10px;letter-spacing:.05em}
-@media(max-width:650px){
-  #location-bar{padding:8px 18px;font-size:14px}
-}
-
 /* 共通セクション折りたたみのボタン風スタイル */
 .disclosure-button{cursor:pointer;font-weight:bold;font-size:17px;padding:18px 22px;background:#0a4a52;color:white;border-radius:6px;list-style:none;display:flex;align-items:center;gap:12px;transition:background .2s}
 .disclosure-button::-webkit-details-marker{display:none}
@@ -104,8 +96,6 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 
 <div id="guide-participant" role="tabpanel" aria-labelledby="tab-participant" data-tab-panel="participant">
 
-<div id="location-bar" role="status" aria-live="polite" aria-label="現在の位置"><span class="prefix">現在の案内</span><span id="location-bar-text"></span></div>
-
 <section class="intro">
   <label>参加者向け ／ 地下街を通る経路（地上を歩くルートとは別のご案内です）</label>
   <h1>研修会場への道案内（地上ルート以外）</h1>
@@ -125,19 +115,6 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       <figcaption>参考：三宮駅前の工事現場のようす（撮影：兵庫支局メンバー）</figcaption>
     </figure>
   </aside>
-  <div class="tips">
-    <h3>参考：三宮各駅の車いすで通れる改札・EVの位置</h3>
-    <p>車いすで駅構内を移動する際、どの改札・エレベーターが通れるかを事前に確認できる外部サイトとして、<a href="https://barrier-free-map.com/6549.php">「三宮駅 乗り換え のバリアフリー情報」（バリアフリーマップ）</a>が参考になります。</p>
-    <p class="note">※撮影時期が不明のため、工事による現状との差異はご了承ください。</p>
-  </div>
-  <div class="tips">
-    <h3>迷ったら</h3>
-    <p>兵庫のオプチャやSlackでご連絡ください。</p>
-    <ul>
-      <li><a href="https://line.me/ti/g2/gknKp1Lhf251DXhxMSpNH-mfsu90caIgdSnn1g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">オープンチャット「兵庫支局（チームみらい）」</a></li>
-      <li><a href="https://team-mirai-volunteer.slack.com/archives/C091S21PNJF">Slack 兵庫チャンネル</a></li>
-    </ul>
-  </div>
 </section>
 
 <section class="address">
@@ -161,7 +138,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   <p class="note">※このプロトタイプは JR三ノ宮、阪神 神戸三宮、阪急 神戸三宮、新神戸・地下鉄 三宮、神戸空港（ポートライナー）・他市バス の5経路で確認できます。海岸線 三宮・花時計前からのご案内は用意していません。</p>
 </section>
 
-<section aria-labelledby="section-station-route" data-location-section="station">
+<section aria-labelledby="section-station-route">
   <h2 id="section-station-route"><em>02</em><span data-station-name>阪神 神戸三宮</span>から、さんちかへ</h2>
 
   <!-- JR三ノ宮 -->
@@ -326,7 +303,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   </div>
 </section>
 
-<section data-location-section="common">
+<section>
   <h2><em>03</em>さんちかから、三宮研修センターへ（全駅共通）</h2>
   <details>
     <summary class="disclosure-button">
@@ -377,6 +354,22 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 
   </ol>
   </details>
+</section>
+
+<section>
+  <div class="tips">
+    <h3>参考：三宮各駅の車いすで通れる改札・EVの位置</h3>
+    <p>車いすで駅構内を移動する際、どの改札・エレベーターが通れるかを事前に確認できる外部サイトとして、<a href="https://barrier-free-map.com/6549.php">「三宮駅 乗り換え のバリアフリー情報」（バリアフリーマップ）</a>が参考になります。</p>
+    <p class="note">※撮影時期が不明のため、工事による現状との差異はご了承ください。</p>
+  </div>
+  <div class="tips">
+    <h3>迷ったら</h3>
+    <p>兵庫のオプチャやSlackでご連絡ください。</p>
+    <ul>
+      <li><a href="https://line.me/ti/g2/gknKp1Lhf251DXhxMSpNH-mfsu90caIgdSnn1g?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">オープンチャット「兵庫支局（チームみらい）」</a></li>
+      <li><a href="https://team-mirai-volunteer.slack.com/archives/C091S21PNJF">Slack 兵庫チャンネル</a></li>
+    </ul>
+  </div>
 </section>
 
 <footer style="padding:32px 44px;background:#f0f5f8">
@@ -496,8 +489,6 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       p.hidden = p.dataset.panel !== station;
     });
     nameEls.forEach(el => { el.textContent = stationNames[station] || ''; });
-    // 柱の表示中なら、テキストも更新
-    if (typeof updateLocationBarText === 'function' && currentSection) updateLocationBarText();
   }
   stButtons.forEach(b => b.addEventListener('click', () => showStation(b.dataset.station)));
   const initialStation = document.querySelector('.stations button[aria-pressed="true"][data-station]');
@@ -517,75 +508,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     });
     // タブ切替時はページ上部にスクロール
     window.scrollTo({ top: 0, behavior: 'auto' });
-    // 柱を非表示にリセット
-    hideLocationBar();
   }
   tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
-
-  // 現在位置バー（柱）の制御
-  const locationBar = document.getElementById('location-bar');
-  const locationText = document.getElementById('location-bar-text');
-  const sections = document.querySelectorAll('[data-location-section]');
-  let currentSection = null;
-  function updateLocationBarText(){
-    if (!currentSection) { hideLocationBar(); return; }
-    const type = currentSection.dataset.locationSection;
-    let text = '';
-    if (type === 'station') {
-      const stName = stationNames[document.querySelector('.stations button[aria-pressed="true"][data-station]')?.dataset.station] || '';
-      text = `${stName} → さんちか`;
-    } else if (type === 'common') {
-      text = 'さんちか → 三宮研修センター';
-    }
-    locationText.textContent = text;
-    locationBar.classList.add('is-visible');
-  }
-  function hideLocationBar(){
-    currentSection = null;
-    locationBar.classList.remove('is-visible');
-  }
-  function updateLocationBarByScroll(){
-    // 参加者タブが非表示なら柱も非表示
-    const participantPanel = document.querySelector('[data-tab-panel="participant"]');
-    if (!participantPanel || participantPanel.hidden) { hideLocationBar(); return; }
-    // 画面の上端から一定の位置（判定ライン）を基準に、その位置を含むセクションを探す
-    const referenceY = 100; // 画面上端から100px下の位置
-    let found = null;
-    sections.forEach(s => {
-      const rect = s.getBoundingClientRect();
-      if (rect.top <= referenceY && rect.bottom > referenceY) {
-        found = s;
-      }
-    });
-    if (found) {
-      currentSection = found;
-      updateLocationBarText();
-    } else {
-      // 判定ラインより下にセクションがある = まだ入っていない
-      // 判定ラインより上にセクションがある = 通り過ぎた
-      const anyBelow = Array.from(sections).some(s => s.getBoundingClientRect().top > referenceY);
-      const anyAbove = Array.from(sections).some(s => s.getBoundingClientRect().bottom <= referenceY);
-      if (anyAbove && !anyBelow) {
-        // 全て通り過ぎた場合、最後のセクションを表示
-        currentSection = sections[sections.length - 1];
-        updateLocationBarText();
-      } else {
-        hideLocationBar();
-      }
-    }
-  }
-  let scrollTicking = false;
-  window.addEventListener('scroll', () => {
-    if (!scrollTicking) {
-      requestAnimationFrame(() => {
-        updateLocationBarByScroll();
-        scrollTicking = false;
-      });
-      scrollTicking = true;
-    }
-  }, { passive: true });
-  // 初回チェック
-  updateLocationBarByScroll();
 })();
 </script>
 </body></html>
