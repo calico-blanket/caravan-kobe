@@ -57,6 +57,21 @@ details{padding:2px 0}
   #location-bar{padding:8px 18px;font-size:14px}
 }
 
+/* 共通セクション折りたたみのボタン風スタイル */
+.disclosure-button{cursor:pointer;font-weight:bold;font-size:17px;padding:18px 22px;background:#0a4a52;color:white;border-radius:6px;list-style:none;display:flex;align-items:center;gap:12px;transition:background .2s}
+.disclosure-button::-webkit-details-marker{display:none}
+.disclosure-button::marker{content:''}
+.disclosure-button:hover{background:#0d5c66}
+.disclosure-button .icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:white;color:#0a4a52;border-radius:50%;font-size:14px;flex:none;transition:transform .2s}
+details[open] .disclosure-button .icon{transform:rotate(45deg)}
+.disclosure-button .action{margin-left:auto;font-size:14px;font-weight:normal;color:#9dd1d5}
+details[open] .disclosure-button .action::before{content:'閉じる'}
+details:not([open]) .disclosure-button .action::before{content:'開く'}
+@media(max-width:650px){
+  .disclosure-button{font-size:15px;padding:14px 16px;gap:10px}
+  .disclosure-button .action{font-size:13px}
+}
+
 /* スクリーンリーダー専用テキスト */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b86d00;outline-offset:3px}
@@ -314,7 +329,12 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 <section data-location-section="common">
   <h2><em>03</em>さんちかから、三宮研修センターへ（全駅共通）</h2>
   <details>
-    <summary style="cursor:pointer;font-weight:bold;font-size:17px;padding:14px 18px;background:#eaf6f7;border-left:5px solid #00828b;border-radius:4px">さんちか → 神戸国際会館 → フラワーロード → 研修センターの3ステップを開く<span class="sr-only">（ここから先はどの駅から来ても同じ道順です。3つのステップを含みます）</span></summary>
+    <summary class="disclosure-button">
+      <span class="icon" aria-hidden="true">＋</span>
+      <span>さんちか → 神戸国際会館 → フラワーロード → 研修センターの案内を見る</span>
+      <span class="action"></span>
+      <span class="sr-only">（ここから先はどの駅から来ても同じ道順です。3つのステップを含みます）</span>
+    </summary>
     <p class="note" style="margin-top:14px">ここから先はどの駅から来ても同じ道順です。</p>
 
   <ol class="journey">
@@ -524,31 +544,48 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     currentSection = null;
     locationBar.classList.remove('is-visible');
   }
-  if ('IntersectionObserver' in window && sections.length) {
-    const observer = new IntersectionObserver((entries) => {
-      // 見えているセクションのうち、いちばん上にあるものを採用
-      const visible = entries.filter(e => e.isIntersecting).map(e => e.target);
-      if (visible.length) {
-        // 見えているセクションの中で、一番上にあるものを取得
-        visible.sort((a, b) => a.getBoundingClientRect().top - b.getBoundingClientRect().top);
-        currentSection = visible[0];
+  function updateLocationBarByScroll(){
+    // 参加者タブが非表示なら柱も非表示
+    const participantPanel = document.querySelector('[data-tab-panel="participant"]');
+    if (!participantPanel || participantPanel.hidden) { hideLocationBar(); return; }
+    // 画面の上端から一定の位置（判定ライン）を基準に、その位置を含むセクションを探す
+    const referenceY = 100; // 画面上端から100px下の位置
+    let found = null;
+    sections.forEach(s => {
+      const rect = s.getBoundingClientRect();
+      if (rect.top <= referenceY && rect.bottom > referenceY) {
+        found = s;
+      }
+    });
+    if (found) {
+      currentSection = found;
+      updateLocationBarText();
+    } else {
+      // 判定ラインより下にセクションがある = まだ入っていない
+      // 判定ラインより上にセクションがある = 通り過ぎた
+      const anyBelow = Array.from(sections).some(s => s.getBoundingClientRect().top > referenceY);
+      const anyAbove = Array.from(sections).some(s => s.getBoundingClientRect().bottom <= referenceY);
+      if (anyAbove && !anyBelow) {
+        // 全て通り過ぎた場合、最後のセクションを表示
+        currentSection = sections[sections.length - 1];
         updateLocationBarText();
       } else {
-        // どのセクションも交差していない場合、直近まで見えていたものが上にスクロールされたか下にスクロールされたか判断
-        const anyBelow = Array.from(sections).some(s => s.getBoundingClientRect().top > window.innerHeight);
-        const anyAbove = Array.from(sections).some(s => s.getBoundingClientRect().bottom < 0);
-        if (anyAbove && !anyBelow) {
-          // 全てのセクションが上に流れた → 最後のセクション（共通）の位置
-          currentSection = sections[sections.length - 1];
-          updateLocationBarText();
-        } else if (anyBelow && !anyAbove) {
-          // まだセクションに入っていない → 非表示
-          hideLocationBar();
-        }
+        hideLocationBar();
       }
-    }, { rootMargin: '-80px 0px -50% 0px', threshold: 0 });
-    sections.forEach(s => observer.observe(s));
+    }
   }
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        updateLocationBarByScroll();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+  // 初回チェック
+  updateLocationBarByScroll();
 })();
 </script>
 </body></html>
