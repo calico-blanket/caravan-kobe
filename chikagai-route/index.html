@@ -66,6 +66,12 @@ details:not([open]) .disclosure-button .action::before{content:'開く'}
 
 /* スクリーンリーダー専用テキスト */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* リンク誘導ブロック（写真つき解説記事など） */
+.link-callout{background:#eef6f5;border-left:5px solid #0a8a86;border-radius:4px;padding:14px 18px;margin-top:10px}
+.link-callout .q{font-weight:bold;color:#0a4a52;margin:0 0 6px;font-size:15px}
+.link-callout .arrow{color:#0a8a86;margin-right:4px;font-weight:bold}
+.link-callout a{font-weight:bold}
 summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b86d00;outline-offset:3px}
 @media(max-width:650px){
   header{padding:14px 18px;gap:12px}
@@ -78,6 +84,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   .stations button{font-size:14px;padding:11px}
   h2{font-size:22px}
   .step{padding:16px}
+  .address div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
 </style></head>
 <body>
@@ -397,6 +404,16 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     <p>大阪市西区靱本町1丁目8番4号</p>
     <p><a href="https://www.ostec.or.jp/access.html">公式アクセスマップ（外部サイト）</a></p>
     <p class="note">※類似名称の<strong>大阪市立科学館</strong>（中之島）と間違えないでください。</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+      <figure style="margin:0">
+        <img src="images/osaka-ostec-building.jpg" alt="大阪科学技術センターの建物全景。8階建てのグレー色の建物で、上部に「大阪科学技術館」のマークがある"/>
+        <figcaption>大阪科学技術センター 全景（1〜2階は大阪科学技術館、3階以上が大阪科学技術センター）</figcaption>
+      </figure>
+      <figure style="margin:0">
+        <img src="images/osaka-ostec-entrance.jpg" alt="大阪科学技術館の入口付近。ガラス張りの正面玄関に「大阪科学技術館」の看板"/>
+        <figcaption>大阪科学技術センターの入口付近</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -410,9 +427,12 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
         <li>JR三ノ宮駅から新快速で<strong>大阪駅まで最短の約21分</strong>。</li>
         <li>本数が多い。</li>
         <li>大阪駅から西梅田駅までは<strong>徒歩5〜7分</strong>かかり、経路はやや複雑。</li>
-        <li>参考：<a href="https://th-page.net/osaka-eki-to-subway-nishi-umeda/">JR大阪駅から西梅田駅までの写真つき解説記事（個人ブログ）</a></li>
         <li><strong>【タクシーで直行も可能】</strong>大阪駅・桜橋口からタクシーで大阪科学技術センターまで直行も可能。約10〜20分、料金目安1,300円程度（御堂筋の混雑状況による。土曜日日中は緩やかな渋滞の可能性あり）。<br/>※上記は例です。タクシー乗り場は各駅に複数あります。</li>
       </ul>
+      <div class="link-callout">
+        <p class="q">「西梅田駅への道順がわからない」方はこちら</p>
+        <p><span class="arrow">→</span><a href="https://th-page.net/osaka-eki-to-subway-nishi-umeda/">JR大阪駅から西梅田駅までの経路を写真つきで解説（個人ブログ）</a></p>
+      </div>
     </li>
     <li class="step">
       <div class="step-head"><span class="num">B</span><h3>阪神本線 特急・直通特急で 神戸三宮 → 大阪梅田 → 西梅田（四つ橋線）</h3></div>
@@ -420,16 +440,22 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
         <li>阪神 神戸三宮駅から<strong>大阪梅田行きの特急・直通特急</strong>で約31〜32分。<br/>※大阪難波・奈良方面行きとは区別してください。</li>
         <li>大阪梅田駅から四つ橋線 西梅田駅まで最短。同じ地下街内を移動するので<strong>乗り換えが分かりやすい</strong>。</li>
         <li>不慣れな方や複数人での移動におすすめ。</li>
-        <li>参考：<a href="https://osaka-transfer.com/hsuynu/">阪神大阪梅田から西梅田駅までの写真つき解説記事（個人ブログ）</a></li>
       </ul>
+      <div class="link-callout">
+        <p class="q">「西梅田駅への道順がわからない」方はこちら</p>
+        <p><span class="arrow">→</span><a href="https://osaka-transfer.com/hsuynu/">阪神大阪梅田駅から西梅田駅までの経路を写真つきで解説（個人ブログ）</a></p>
+      </div>
     </li>
     <li class="step">
       <div class="step-head"><span class="num">C</span><h3>阪急神戸本線 特急で 神戸三宮 → 大阪梅田 → 西梅田（四つ橋線）</h3></div>
       <ul>
         <li>阪急 神戸三宮駅から阪急神戸本線 特急で<strong>大阪梅田まで約30分</strong>。</li>
         <li>大阪梅田駅から西梅田駅まで<strong>徒歩でやや距離あり</strong>（地上・地下を経由）。</li>
-        <li>参考：<a href="https://osaka-news.jp/life/hankyu-nishiumeda/">阪急大阪梅田から西梅田駅までの写真つき解説記事（個人ブログ）</a></li>
       </ul>
+      <div class="link-callout">
+        <p class="q">「西梅田駅への道順がわからない」方はこちら</p>
+        <p><span class="arrow">→</span><a href="https://osaka-news.jp/life/hankyu-nishiumeda/">阪急大阪梅田駅から西梅田駅までの経路を写真つきで解説（個人ブログ）</a></p>
+      </div>
     </li>
   </ol>
   <p class="note">※上記の参考リンクはいずれも個人ブログのため、内容が変わったり削除される場合があります。</p>
