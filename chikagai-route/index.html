@@ -72,11 +72,11 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 </header>
 
 <nav aria-label="案内の切り替え" role="tablist">
-  <button aria-pressed="true" role="tab" aria-selected="true" id="tab-participant" aria-controls="guide">参加者の方｜三宮会場へ</button>
-  <button aria-pressed="false" role="tab" aria-selected="false" id="tab-staff" aria-controls="guide">スタッフの方｜大阪会場へ</button>
+  <button aria-pressed="true" role="tab" aria-selected="true" id="tab-participant" aria-controls="guide-participant" data-tab="participant">参加者の方｜三宮会場へ</button>
+  <button aria-pressed="false" role="tab" aria-selected="false" id="tab-osaka" aria-controls="guide-osaka" data-tab="osaka">大阪会場への移動</button>
 </nav>
 
-<div id="guide" role="tabpanel" aria-labelledby="tab-participant">
+<div id="guide-participant" role="tabpanel" aria-labelledby="tab-participant" data-tab-panel="participant">
 
 <section class="intro">
   <label>参加者向け ／ 地下街を通る経路（地上を歩くルートとは別のご案内です）</label>
@@ -349,10 +349,123 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   <p class="note">当日の設備停止や工事変更がある場合は、この限りではありません。</p>
 </footer>
 
-</div>
+</div><!-- /guide-participant -->
+
+<div id="guide-osaka" role="tabpanel" aria-labelledby="tab-osaka" data-tab-panel="osaka" hidden>
+
+<section class="intro">
+  <label>参加者・スタッフ向け ／ 神戸会場 → 大阪会場</label>
+  <h1>三宮から大阪会場（大阪科学技術センター）への移動</h1>
+  <p>神戸会場での研修後、大阪会場へ移動する方向けの案内です。三宮駅から大阪梅田まで約20〜30分、そこから四つ橋線で1駅の本町駅が最寄りです。</p>
+  <p class="note">研修終了直後（13:30以降）に、無理なく通常の乗換で移動する方を想定しています。もっと早く着く必要がある方（スタッフの先行組など）は、下部の「参考：14:30着を目指す場合の移動計画」をご覧ください。</p>
+</section>
+
+<section class="address">
+  <label>大阪会場（目的地）</label>
+  <h2>大阪科学技術センター 8階大ホール</h2>
+  <p>大阪市西区靱本町1丁目8番4号</p>
+  <p><a href="https://www.ostec.or.jp/access.html">公式アクセスマップ（外部サイト）</a></p>
+  <p class="note">大阪市立科学館とは別施設です。最寄り駅は Osaka Metro 四つ橋線「本町」駅。</p>
+</section>
+
+<section>
+  <h2><em>01</em>三宮から大阪／梅田まで（3つの選択肢）</h2>
+  <p class="note">目的地が四つ橋線「本町」駅なので、いずれの選択肢でも梅田で四つ橋線に乗り換えます。時間・費用・乗り換えの手間で選んでください。</p>
+
+  <ol class="journey">
+    <li class="step">
+      <div class="step-head"><span class="num">A</span><h3>JR新快速で 三ノ宮 → 大阪（最速）</h3></div>
+      <p>JR三ノ宮駅から新快速で<strong>大阪駅まで約21分</strong>。本数が多く分かりやすい選択肢です。大阪駅からは徒歩で西梅田駅（四つ橋線）へ、または<strong>タクシー</strong>で会場まで直行という選択肢もあります。</p>
+      <p class="note">タクシー乗り場の位置は事前に確認しておくと安心です（乗り場が複数あり、待ち列や道路混雑の影響もあります）。</p>
+    </li>
+    <li class="step">
+      <div class="step-head"><span class="num">B</span><h3>阪神本線 特急・直通特急で 神戸三宮 → 大阪梅田</h3></div>
+      <p>阪神 神戸三宮駅から<strong>大阪梅田行きの特急・直通特急</strong>で約31〜32分。<strong>大阪難波・奈良方面行きとは区別</strong>してください。阪神大阪梅田駅は西梅田駅（四つ橋線）まで比較的近く、乗り換えを揃えやすい経路です。</p>
+    </li>
+    <li class="step">
+      <div class="step-head"><span class="num">C</span><h3>阪急神戸本線で 神戸三宮 → 大阪梅田</h3></div>
+      <p>阪急 神戸三宮駅から阪急神戸本線で<strong>大阪梅田まで約30分</strong>。阪急大阪梅田駅からも徒歩で西梅田駅（四つ橋線）に乗り換えられます。</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2><em>02</em>梅田から本町まで（四つ橋線で1駅）</h2>
+  <p>大阪／梅田に着いたら、<strong>Osaka Metro 四つ橋線 西梅田駅</strong>から住之江公園方面行きに乗り、<strong>1駅先の本町駅</strong>で降ります。</p>
+  <ul>
+    <li><strong>JR大阪駅から</strong>：桜橋口から地上へ出て徒歩で西梅田駅へ（数分程度）。<a href="https://eki.jr-odekake.net/premises?id=0610130">JR大阪駅 公式構内図（外部サイト）</a></li>
+    <li><strong>阪神大阪梅田駅から</strong>：西口改札から徒歩で西梅田駅へ（比較的近い）</li>
+    <li><strong>阪急大阪梅田駅から</strong>：徒歩で西梅田駅へ</li>
+  </ul>
+  <p class="note">駅同士の乗り換えなので、案内表示に従って進んでください。<a href="https://subway.osakametro.co.jp/station_guide/Y/y11/index.php">Osaka Metro 西梅田駅 公式案内（外部サイト）</a></p>
+</section>
+
+<section>
+  <h2><em>03</em>本町から大阪科学技術センターへ</h2>
+  <p>本町駅で降りたら、<strong>28号出口</strong>から地上へ出て、四つ橋筋の西側を<strong>北へ徒歩約5分</strong>。<strong>靱公園の北東側</strong>に大阪科学技術センターがあります。</p>
+  <details open>
+    <summary>図で確認する：本町駅から会場までの位置図</summary>
+    <figure>
+      <svg viewBox="0 0 700 410" role="img" aria-label="北が上。本町駅28号出口から四つ橋筋の西側を北へ、靱公園北東側の大阪科学技術センターへ"><rect width="700" height="410" fill="#f4f8fa"></rect><path d="M390 20V390" stroke="#d4dfe6" stroke-width="65"></path><path d="M25 330H675" stroke="#d4dfe6" stroke-width="46"></path><rect x="55" y="160" width="260" height="120" rx="8" fill="#d5e9c0"></rect><rect x="200" y="130" width="145" height="50" rx="6" fill="#193b54"></rect><path d="M344 315V153H330" stroke="#00858e" stroke-width="8" fill="none"></path><path d="m336 140-17 13 17 13" stroke="#00858e" stroke-width="5" fill="none"></path><g font-size="20" fill="#19314a"><text x="35" y="42">↑ 北・肥後橋側</text><text x="85" y="230">靱公園</text><text x="65" y="105">大阪科学技術センター</text><text x="216" y="161" fill="white">会場入口側</text><text x="442" y="210">四つ橋筋</text><text x="56" y="317" font-size="17">信濃橋三井ビル</text><text x="276" y="373">本町駅</text><text x="30" y="377" font-size="18">28号出口（西側）</text></g><circle cx="344" cy="332" r="12" fill="#00858e"></circle></svg>
+      <figcaption>公式アクセスをもとにした位置図（縮尺なし）。<a href="https://www.ostec.or.jp/access.html">大阪科学技術センター公式アクセスマップ（外部サイト）</a></figcaption>
+    </figure>
+  </details>
+  <p class="note">別ルート：<strong>肥後橋駅 7号出口</strong>から南へ徒歩約6分でも会場に着きます。参加者どうしで集合する場合は、駅を揃えてください。</p>
+</section>
+
+<section>
+  <h2><em>参考</em>14:30着を目指す場合の移動計画（スタッフ向け）</h2>
+  <details style="background:#fff4de;border-left:5px solid #b87908;padding:14px 18px">
+    <summary style="cursor:pointer;font-weight:bold">研修終了（13:30）から大阪会場14:30着を目指す方はこちら</summary>
+    <p>研修終了13:30から大阪科学技術センター14:30着を目指すには、研修終了を待って移動を開始すると<strong>間に合わない可能性が高い</strong>ため、先行組と荷物担当を分ける運営調整案です。</p>
+
+    <aside>
+      <strong>14:00に三宮会場を出る計画では、間に合う前提にできません。</strong>
+      JR新快速でも三ノ宮〜大阪は約21分の列車例があり、駅までの徒歩と大阪側の移動が別途必要です。13:52発の新快速では本町着14:26となり、会場までの徒歩を含めると14:30着に余裕がありません。
+    </aside>
+
+    <h3 style="margin-top:22px">役割ごとに分かれる</h3>
+    <p><strong>先行組</strong>：13:15〜13:20ごろに会場を出発する案です。大阪駅から四つ橋線、またはタクシーを比較します。受付に必要な最小限の荷物だけ持ち、ICカードを準備。<strong>目標：13:37 三ノ宮発の新快速</strong>。会場出発時刻は徒歩・改札・ホーム移動の余裕を見た計画値です。13:30の研修終了を待つと、この便への乗車は厳しくなります。</p>
+    <p><strong>荷物・片付け組</strong>：段差を避け、荷物量と必要な介助に応じて駅からのタクシー、会場間の車移動も検討します。<strong>14:00発なら、到着担当を先行組へ</strong>。車も渋滞・配車待ちがあり30分到着は保証できません。荷物担当も14:30必着なら撤収分担・終了時刻の調整が必要です。</p>
+
+    <h3 style="margin-top:22px">JRで大阪へ向かう場合の接続例（9月19日）</h3>
+    <p>13:37 三ノ宮（新快速・長浜行） → 13:58 大阪 → 徒歩で西梅田 → 14:14 四つ橋線・住之江公園行 → 14:18 本町。28号出口から地上へ出て北に徒歩約5分。駅構内の移動時間も必要です。</p>
+    <p><a href="https://transit.yahoo.co.jp/search/result?from=%E4%B8%89%E3%83%8E%E5%AE%AE&amp;to=%E6%9C%AC%E7%94%BA&amp;y=2026&amp;m=09&amp;d=19&amp;hh=13&amp;m1=3&amp;m2=0&amp;type=1&amp;via=%E8%A5%BF%E6%A2%85%E7%94%B0">9月19日の乗換検索を開く（Yahoo!）（外部サイト）</a></p>
+
+    <h3 style="margin-top:22px">阪神で大阪へ（乗り換えを揃えやすい別ルート）</h3>
+    <p>行きの経路を逆に、国際会館 → さんちかを北上 → 神戸阪急側 → 阪神西改札へ。<strong>大阪梅田行きの特急・直通特急</strong>を選び、大阪難波・奈良方面行きと区別します。大阪梅田まで約31〜32分の列車例があります。JRより車内時間が長いため、14:30必着の先行組は当日の接続を含めて判断します。</p>
+
+    <h3 style="margin-top:22px">階段を避けて、大阪駅から西梅田へ</h3>
+    <ol>
+      <li>JRホームのEVから、段差なしで通れる「南口改札」へ。改札を出て地上1階を桜橋口方面へ歩く。</li>
+      <li>西梅田駅北側、ハービスENT側の4-A出入口付近にある地上EVへ。下の構内図の「コンコース階〜B1F〜地上」のEVです。</li>
+      <li>地下に降りたら、北改札には入らず改札外の北コンコースを南へ。西梅田の「南改札」から入り、ホーム行きEVで降りる。</li>
+    </ol>
+    <figure>
+      <a href="images/nishiumeda.png" target="_blank" rel="noreferrer"><img src="images/nishiumeda.png" alt="西梅田駅構内図。北側4-A付近の地上EVから改札外通路で南改札へ、ホームEVは南側"/></a>
+      <figcaption>出典：<a href="https://subway.osakametro.co.jp/station_guide/Y/y11/index.php">Osaka Metro 西梅田駅（外部サイト）</a></figcaption>
+    </figure>
+    <p class="note">通常の桜橋口・階段経路より遠回りです。14:14の地下鉄への接続を保証する案内ではありません。</p>
+
+    <h3 style="margin-top:22px">大阪駅からタクシーを使う場合</h3>
+    <p>「大阪科学技術センター、靱本町1丁目8-4」へ。大阪市立科学館とは別施設です。乗り場を探す時間・待ち列・道路混雑を含めて比較してください。乗り場の位置と当日の待ち時間は未確認なので「最速」とは断定していません。採用する場合は出発前に乗り場を一つ決めて共有してください。</p>
+
+    <h3 style="margin-top:22px">本町駅：階段を避けるルート</h3>
+    <p>西梅田から到着する1番線ホーム → 北東改札 → 26号出入口EV → 地上へ。四つ橋筋の東側に出るため、横断歩道で西側へ渡り、会場方面へ北上します。28号出口の徒歩5分に、EV待ちや横断の時間を加えてください。<a href="https://subway.osakametro.co.jp/station_guide/Y/y13/index.php">本町駅・EVと改札の公式案内（外部サイト）</a></p>
+  </details>
+</section>
+
+<footer style="padding:32px 44px;background:#f0f5f8">
+  <h2 style="font-size:20px">情報の根拠と確認日</h2>
+  <p style="font-size:14px">情報確認日：2026年9月6日。駅・会場などの公式案内と、乗換検索例をもとにしています。</p>
+  <p class="note">当日の運行状況・乗り場変更がある場合は、この限りではありません。出発前に乗換検索・公式サイトで最新情報をご確認ください。</p>
+</footer>
+
+</div><!-- /guide-osaka -->
 </main>
 <script>
 (function(){
+  // 駅別パネルの切替
   const stationNames = {
     jr: 'JR 三ノ宮',
     hanshin: '阪神 神戸三宮',
@@ -360,24 +473,40 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     subway: '新神戸・地下鉄 三宮',
     port: '神戸空港（ポートライナー）・他市バス'
   };
-  const buttons = document.querySelectorAll('.stations button[data-station]');
-  const panels = document.querySelectorAll('.station-panel');
+  const stButtons = document.querySelectorAll('.stations button[data-station]');
+  const stPanels = document.querySelectorAll('.station-panel');
   const nameEls = document.querySelectorAll('[data-station-name]');
-  function show(station){
-    buttons.forEach(b => {
+  function showStation(station){
+    stButtons.forEach(b => {
       const sel = b.dataset.station === station;
       b.setAttribute('aria-pressed', sel);
       b.setAttribute('aria-checked', sel);
     });
-    panels.forEach(p => {
+    stPanels.forEach(p => {
       p.hidden = p.dataset.panel !== station;
     });
     nameEls.forEach(el => { el.textContent = stationNames[station] || ''; });
   }
-  buttons.forEach(b => b.addEventListener('click', () => show(b.dataset.station)));
-  // 初期表示：aria-pressed=trueのボタンに従う
-  const initial = document.querySelector('.stations button[aria-pressed="true"][data-station]');
-  if (initial) show(initial.dataset.station);
+  stButtons.forEach(b => b.addEventListener('click', () => showStation(b.dataset.station)));
+  const initialStation = document.querySelector('.stations button[aria-pressed="true"][data-station]');
+  if (initialStation) showStation(initialStation.dataset.station);
+
+  // トップタブ（参加者／大阪）の切替
+  const tabButtons = document.querySelectorAll('nav [role="tab"][data-tab]');
+  const tabPanels = document.querySelectorAll('[data-tab-panel]');
+  function showTab(tab){
+    tabButtons.forEach(b => {
+      const sel = b.dataset.tab === tab;
+      b.setAttribute('aria-pressed', sel);
+      b.setAttribute('aria-selected', sel);
+    });
+    tabPanels.forEach(p => {
+      p.hidden = p.dataset.tabPanel !== tab;
+    });
+    // タブ切替時はページ上部にスクロール
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+  tabButtons.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 })();
 </script>
 </body></html>
