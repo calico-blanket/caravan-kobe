@@ -72,6 +72,15 @@ details:not([open]) .disclosure-button .action::before{content:'開く'}
 .link-callout .q{font-weight:bold;color:#0a4a52;margin:0 0 6px;font-size:15px}
 .link-callout .arrow{color:#0a8a86;margin-right:4px;font-weight:bold}
 .link-callout a{font-weight:bold}
+
+/* 注意喚起の赤字（重要な警告用） */
+.warn,.note.warn{color:#c62828;font-weight:bold}
+
+/* 画像上に位置マーカーを重ねるためのラッパ */
+.image-annotate{position:relative;display:block;line-height:0}
+.image-annotate img{width:100%;height:auto;display:block}
+.image-annotate .marker{position:absolute;border:3px solid #d32f2f;border-radius:8px;box-shadow:0 0 0 2px rgba(255,255,255,.85);pointer-events:none}
+.image-annotate .marker-label{position:absolute;background:#d32f2f;color:white;font-size:12px;font-weight:bold;padding:3px 8px;border-radius:4px;white-space:nowrap;pointer-events:none;line-height:1.3}
 summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b86d00;outline-offset:3px}
 @media(max-width:650px){
   header{padding:14px 18px;gap:12px}
@@ -107,15 +116,15 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   <label>参加者向け ／ 地下街を通る経路（地上を歩くルートとは別のご案内です）</label>
   <h1>研修会場への道案内（地上ルート以外）</h1>
   <h2 style="margin-top:20px">この案内の使い方</h2>
-  <p>この案内では、到着駅または到着地から、<strong>地下街（さんちか）を通り、国際会館で地上へ出て、三宮研修センターに至る道順</strong>を記しています。<br/>工事のため、地下街から三宮研修センターに直接には行けません。</p>
+  <p>この案内では、到着駅または到着地から、<strong>地下街（さんちか）を通り、国際会館で地上へ出て、三宮研修センターに至る道順</strong>を記しています。<br/><span class="warn">工事のため、地下街から三宮研修センターに直接には行けません。</span></p>
   <p class="note">※新神戸駅からポートループバスに乗る場合は、地下街を通らず三宮研修センターまで直結です。</p>
   <p>道順は、後に出てくる「<a href="#station-select">01 到着した駅を選ぶ</a>」で到着した駅別に確認することができます。</p>
-  <aside>
-    <strong>現在、三宮駅周辺では大規模な工事が継続中です。</strong>
+  <aside id="construction-map">
+    <strong class="warn">現在、三宮駅周辺では大規模な工事が継続中です。</strong>
     地下街でも通れない道があり、この案内では迂回路でご案内しています。
     <figure style="margin-top:14px">
-      <img src="images/construction-area.png" alt="三宮駅周辺の工事区域図。JR三ノ宮新駅ビル部分が工事中で、赤い×印の箇所が通行止め。さんちか・ミント神戸・神戸阪急・阪神神戸三宮駅の位置関係と、通行可能な通路が緑の矢印で示されている"/>
-      <figcaption>出典：<a href="https://www.city.kobe.lg.jp/a55197/koujinooshirase_ekisyuuhenn.html">神戸市・駅周辺の工事案内（外部サイト）</a>。最新の規制状況は当日あわせてご確認ください。</figcaption>
+      <img src="images/construction-area.png" alt="三宮駅周辺の地下通路の工事区域図。JR三ノ宮新駅ビル部分が工事中で、赤い×印の箇所が通行止め。さんちか・ミント神戸・神戸阪急・阪神神戸三宮駅の位置関係と、通行可能な通路が緑の矢印で示されている"/>
+      <figcaption>三宮駅周辺の地下通路の工事区域図。出典：<a href="https://www.city.kobe.lg.jp/a55197/koujinooshirase_ekisyuuhenn.html">神戸市・駅周辺の工事案内（外部サイト）</a>。最新の規制状況は当日あわせてご確認ください。</figcaption>
     </figure>
     <figure style="margin-top:14px">
       <img src="images/construction-photo.jpg" alt="三宮駅前の工事現場を上から見た写真。JR三ノ宮新駅ビルの建設のため、複数のクレーン・重機と足場が並び、広い範囲が工事エリアになっている"/>
@@ -134,7 +143,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 
 <section id="station-select">
   <h2><em>01</em>到着した駅を選ぶ</h2>
-  <p class="note">この案内はすべてエレベーターを使う経路で書いています。エレベーターの近くに階段やエスカレーターがある場合は、同じ経路で進める可能性が高いので参考にしてください（必ず同じ経路とは限りません）。</p>
+  <p class="note"><span class="warn">この案内はすべてエレベーターを使う経路で書いています。</span>エレベーターの近くに階段やエスカレーターがある場合は、同じ経路で進める可能性が高いので参考にしてください（必ず同じ経路とは限りません）。</p>
   <div class="stations" role="radiogroup" aria-label="到着した駅を選ぶ">
     <button aria-pressed="true" role="radio" aria-checked="true" data-station="jr">JR 三ノ宮<small>中央口 → 北側のEV</small></button>
     <button aria-pressed="false" role="radio" aria-checked="false" data-station="hanshin">阪神 神戸三宮<small>西改札 → 左 → さんちか</small></button>
@@ -153,7 +162,11 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     <ol class="journey">
       <li class="step">
         <div class="step-head"><span class="num">01</span><h3>ホームからエレベーターで中央口へ</h3></div>
-        <p>3階ホームのエレベーターで1階へ降り、<strong>中央口</strong>の改札を出ます。西口は通りません。</p>
+        <p>3階ホームのエレベーターで1階へ降り、<strong>中央口</strong>の改札を出ます。</p>
+        <div class="link-callout">
+          <p class="q warn">参考：階段・エスカレーター利用の方はJR西口が便利です</p>
+          <p>JR三ノ宮駅の西口（エレベーターはありません）から出ると、阪急と同じ経路でさんちかへ行けます。エレベーターを使わない場合は、こちらの方が近いです。詳しい道順は<a href="#" data-goto-station="hankyu">「阪急 神戸三宮」の案内</a>をご覧ください。</p>
+        </div>
         <details open>
           <summary>図で確認する：JR三ノ宮の構内図</summary>
           <a href="images/jr-map.png" target="_blank" rel="noreferrer"><img src="images/jr-map.png" alt="JR三ノ宮の公式構内図。エレベーターと中央口改札の位置を示す"/></a>
@@ -179,7 +192,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       <li class="step">
         <div class="step-head"><span class="num">01</span><h3>ホームからエレベーターで西改札（地下1階）へ</h3></div>
         <p>地下2階ホームから、<strong>西口側のエレベーター</strong>で地下1階へ上がります。エレベーターを出てまっすぐ進むと、<strong>駅長室前の西改札</strong>があります。</p>
-        <p class="note">三宮研修センターへは、再開発工事の関係で<strong>西改札（西口）</strong>が便利です。東改札から出ると、地上・地下ともに工事の迂回が必要になります。</p>
+        <p class="note warn">三宮研修センターへは、再開発工事の関係で<strong>西改札（西口）</strong>が便利です。東改札から出ると、地上・地下ともに工事の迂回が必要になります。</p>
         <details open>
           <summary>図で確認する：阪神 神戸三宮の構内図</summary>
           <a href="images/hanshin-kenshu.png" target="_blank" rel="noreferrer"><img src="images/hanshin-kenshu.png" alt="阪神 神戸三宮駅の構内案内図。左側に西改札とサンチカ方面への通路、右側に東改札とミント神戸方面。図中に「三宮研修センターへは、再開発工事の関係上西口が便利です」と赤字の注記あり"/></a>
@@ -272,8 +285,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       <li class="step">
         <div class="step-head"><span class="num">02</span><h3>三宮駅の改札を出て、ミント神戸2階の南端EVへ</h3></div>
         <p>ホーム中央付近のエレベーターで<strong>3階から2階</strong>へ降り、改札を出て「<strong>阪神（東口）方面</strong>」の出口へ向かいます。</p>
-        <p class="note">改札を出てすぐの「ポートライナー三宮駅 南エレベーター」は<a href="https://www.knt-liner.co.jp/news/8840/">停止中（2026年9月4日〜11月30日）</a>のため使えません。代わりにミント神戸のエレベーターを使います。</p>
-        <p><strong>ミント神戸（三宮バスターミナル）</strong>の2階に入り、南へ進むと奥にエレベーターが3基あります。<strong>一番奥（南端）</strong>のエレベーターを使います。目印は途中のUnited Arrowsなどの店舗です。</p>
+        <p class="note warn">改札を出てすぐの「ポートライナー三宮駅 南エレベーター」は<a href="https://www.knt-liner.co.jp/news/8840/">停止中（2026年9月4日〜11月30日）</a>のため使えません。代わりにミント神戸のエレベーターを使います。</p>
+        <p><strong>ミント神戸（三宮バスターミナル）</strong>の2階に入り（目印は途中のUnited Arrowsなどの店舗）、南へ進むと奥にエレベーターが3基あります。<strong>一番奥（南端）</strong>のエレベーターを使います。</p>
         <details open>
           <summary>図で確認する：ポートライナー 三宮の構内図</summary>
           <a href="images/port-annotated.png" target="_blank" rel="noreferrer"><img src="images/port-annotated.png" alt="ポートライナー 三宮の公式構内図。エレベーターと改札の位置を確認。青丸で囲んだ改札外の出口が、阪神（東口）方面へ進む出口"/></a>
@@ -286,8 +299,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
         <p>ミント神戸南端のエレベーターで<strong>地下1階</strong>へ降ります。</p>
         <details open>
           <summary>図で確認する：ミント神戸周辺の地下と、使うEV・停止中のEV</summary>
-          <a href="images/mint-kobe-ev.png" target="_blank" rel="noreferrer"><img src="images/mint-kobe-ev.png" alt="ミント神戸周辺の地下通路図。ミント神戸北側のエレベーターは赤×で「停止中」、南端の赤ピンが今回使うエレベーター。周辺にはさんちか・味ののれん街・阪神電車 神戸三宮駅 東口も描かれている"/></a>
-          <p class="note">出典：神戸市・駅周辺の工事案内の図に、実際に歩いてくださった方が停止中のエレベーターと使うエレベーターを書き加えたものです。</p>
+          <a href="images/construction-area.png" target="_blank" rel="noreferrer"><img src="images/construction-area.png" alt="三宮駅周辺の地下通路の工事区域図。ミント神戸北側のエレベーターは赤×で通行止め、南側のエレベーターが使える。周辺にはさんちか・味ののれん街・阪神電車 神戸三宮駅も描かれている"/></a>
+          <p class="note">図の右上、ミント神戸北側の階段・EVアイコンが赤×で示されている箇所が停止中です。今回使うのは<strong>ミント神戸南端のEV</strong>（図の右側、阪神 神戸三宮駅 東口の少し上）です。出典：<a href="https://www.city.kobe.lg.jp/a55197/koujinooshirase_ekisyuuhenn.html">神戸市・駅周辺の工事案内（外部サイト）</a>。<a href="#construction-map">ページ冒頭にも同じ図</a>を掲載しています。</p>
         </details>
       </li>
 
@@ -323,28 +336,34 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 
   <ol class="journey">
 
-    <li class="step">
-      <div class="step-head"><span class="num">01</span><h3>さんちかを南へ、神戸国際会館の地下入口（A8）へ</h3></div>
-      <p>さんちかのメイン通路を南に進み、突き当たりで左へ折れて、南端の<strong>「A8／至 神戸国際会館・SOL」</strong>方面へ向かいます。</p>
-      <p class="note">研修センターの最寄り出口だったC5は、<a href="https://f-road.co.jp/kenshu/4832">工事のため使えません（三宮研修センターの通行止め案内）</a>。この案内では、A8を経由して神戸国際会館の地下入口へ入る経路でご案内します。</p>
-      <details open>
-        <summary>図で確認する：三宮各駅からさんちかを通ってA8へ</summary>
-        <img src="images/santica-a1-a8.png" alt="三宮各駅地下-地上ルート図。JR・ポートライナー側やJR阪神側からA1出入口へ、A1からA8（神戸国際会館・SOL方面）まで矢印で示されている"/>
-        <p class="note">出典：<a href="https://f-road.co.jp/kenshu/4832">三宮研修センター「2025年10月より地下道工事による通行止めについて」</a>。到着した駅によってA1に出る位置は異なりますが、A1からA8までの道順は共通です。</p>
-      </details>
-      <details>
-        <summary>参考：三宮駅周辺の地下通路 全体図</summary>
-        <img src="images/underground.jpg" alt="神戸市の地下通路図。左に地下鉄三宮とさんちか、右にミント神戸と阪神東口、下に神戸阪急"/>
-        <p class="note">出典：<a href="https://www.city.kobe.lg.jp/a55197/koujinooshirase_ekisyuuhenn.html">神戸市・駅周辺の工事案内（外部サイト）</a></p>
-      </details>
-    </li>
+      <li class="step">
+        <div class="step-head"><span class="num">01</span><h3>さんちかを南へ、神戸国際会館の地下入口（A8）へ</h3></div>
+        <p>さんちかのメイン通路を南に進み、突き当たりで左へ折れて、南端の<strong>「A8／至 神戸国際会館・SOL」</strong>方面へ向かいます。</p>
+        <p class="note">この案内では、A8を経由して神戸国際会館の地下入口へ入る経路でご案内します。</p>
+        <details style="margin-top:10px">
+          <summary style="cursor:pointer;font-size:14px;color:#52677a">なぜ神戸国際会館経由なのか（C5出口が使えないため）</summary>
+          <p class="note warn" style="margin-top:8px">研修センターの最寄り出口だったC5は、<a href="https://f-road.co.jp/kenshu/4832">工事のため使えません（三宮研修センターの通行止め案内）</a>。</p>
+        </details>
+        <details open>
+          <summary>図で確認する：三宮各駅からさんちかを通ってA8へ</summary>
+          <img src="images/santica-a1-a8.png" alt="三宮各駅地下-地上ルート図。JR・ポートライナー側やJR阪神側からA1出入口へ、A1からA8（神戸国際会館・SOL方面）まで矢印で示されている。図中右上の「JR・ポートライナー（空港）」からA1へ向かう経路には赤い×印と「通れません」の文字が入っている"/>
+          <p class="note"><span class="warn">【重要】この図の一部の経路は現在通れません。</span>図中右上の「JR・ポートライナー（空港）」から直接A1へ向かう経路（赤×印・「通れません」の記載）は工事のため通行止めです。<strong>JR</strong>は「地下鉄連絡通路」を通ってA1へ、<strong>ポートライナー</strong>はミント神戸から阪神 神戸三宮駅と同じ経路になります。詳しくは上の「01 到着した駅を選ぶ」で該当駅の案内をご覧ください。</p>
+          <p class="note">出典：<a href="https://f-road.co.jp/kenshu/4832">三宮研修センター「2025年10月より地下道工事による通行止めについて」</a>。到着した駅によってA1に出る位置は異なりますが、A1からA8までの道順は共通です。</p>
+        </details>
+        <p class="note" style="margin-top:14px">地下通路の通行止め箇所は<a href="#construction-map">ページ冒頭の工事区域図</a>で確認できます。</p>
+      </li>
 
     <li class="step">
       <div class="step-head"><span class="num">02</span><h3>神戸国際会館から1階へ</h3></div>
       <p>A8を出た先に神戸国際会館の地下入口があります。館内には案内表示があり、<strong>西エレベーター</strong>（スターバックスの左側）か、エスカレーターでも1階へ上がれます。</p>
       <details open>
         <summary>図で確認する：神戸国際会館 地下1階フロア図</summary>
-        <a href="images/sol-b1.png" target="_blank" rel="noreferrer"><img src="images/sol-b1.png" alt="神戸国際会館SOLの地下1階。左のSANTICA接続通路の上側に西エレベーター"/></a>
+        <a href="images/sol-b1.png" target="_blank" rel="noreferrer" class="image-annotate">
+          <img src="images/sol-b1.png" alt="神戸国際会館SOLの地下1階。左のSANTICA接続通路の上側、KOBE HANKYU 西と書かれた場所に、赤枠で示された西エレベーター"/>
+          <span class="marker" style="left:20%;top:42%;width:8%;height:11%"></span>
+          <span class="marker-label" style="left:20%;top:28%">西EV<br/>（これを使う）</span>
+        </a>
+        <p class="note">図中の<strong>赤枠</strong>が「西エレベーター」の位置です（「KOBE HANKYU 西」の下）。サンクンガーデン付近にも別のEVがありますが、この案内では西EVを使います。</p>
         <p class="note">出典：<a href="https://www.kobe-sol.jp/shop/floor">神戸国際会館SOL・B1Fフロアガイド（外部サイト）</a></p>
       </details>
     </li>
@@ -354,8 +373,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
       <p>1階に出たら、フラワーロード沿いに南（市役所・海側）へ。国際会館前交差点を南へ渡り、道路の東側を進みます。市バス「市役所前」を通過し、ポートループ「市役所・東遊園地前 PL32」が会場正面の目印です。</p>
       <details open>
         <summary>図で確認する：地上の位置図</summary>
-        <svg viewBox="0 0 700 510" role="img" aria-label="北が上。神戸国際会館から交差点を南へ渡り、フラワーロード東側を研修センターまで歩く"><rect width="700" height="510" fill="#f4f8fa"></rect><path d="M290 20V490" stroke="#d4dfe6" stroke-width="86"></path><path d="M20 170H680" stroke="#d4dfe6" stroke-width="50"></path><g fill="#e0eded" stroke="#91b6bd"><rect x="365" y="35" width="300" height="105" rx="8"></rect><rect x="40" y="280" width="190" height="95" rx="8"></rect><rect x="400" y="385" width="265" height="85" rx="8"></rect></g><g fill="#19314a" font-size="20" font-family="inherit"><text x="42" y="45">↑ 北・駅側</text><text x="410" y="75">神戸国際会館</text><text x="410" y="108">西EV → 1階西側へ</text><text x="390" y="180">国際会館前交差点</text><text x="64" y="325">神戸市役所</text><text x="410" y="418">三宮研修センター</text><text x="415" y="450" font-size="17">カサベラFRⅡビル</text><text x="405" y="275" font-size="18">市バス「市役所前」</text><text x="405" y="334" font-size="18">ポートループ PL32</text><text x="45" y="430" font-size="17">フラワーロード</text><text x="45" y="465">南・海側 ↓</text></g><path d="M389 113H357V424H395" fill="none" stroke="#00858e" stroke-width="9" stroke-linejoin="round"></path><path d="m380 410 18 14-18 14" fill="none" stroke="#00858e" stroke-width="6"></path><circle cx="358" cy="265" r="8" fill="#e39c37"></circle><circle cx="358" cy="327" r="8" fill="#e39c37"></circle><text x="355" y="225" fill="#007480" font-size="17">横断歩道を渡る</text></svg>
-        <p class="note">位置関係を簡略化した図（縮尺なし）。バス停間の距離は表していません。</p>
+        <svg viewBox="0 0 700 510" role="img" aria-label="北が上。神戸国際会館から交差点を南へ渡り、フラワーロード東側を研修センターまで歩く"><rect width="700" height="510" fill="#f4f8fa"></rect><path d="M290 20V490" stroke="#d4dfe6" stroke-width="86"></path><path d="M20 170H680" stroke="#d4dfe6" stroke-width="50"></path><g fill="#e0eded" stroke="#91b6bd"><rect x="365" y="35" width="300" height="105" rx="8"></rect><rect x="40" y="280" width="190" height="95" rx="8"></rect><rect x="400" y="385" width="265" height="85" rx="8"></rect></g><g fill="#19314a" font-size="20" font-family="inherit"><text x="42" y="45">↑ 北・駅側</text><text x="410" y="75">神戸国際会館</text><text x="410" y="108">西EV → 1階西側へ</text><text x="390" y="180">国際会館前交差点</text><text x="64" y="325">神戸市役所</text><text x="410" y="418">三宮研修センター</text><text x="415" y="450" font-size="17">カサベラFRⅡビル</text><text x="405" y="275" font-size="18">市バス「市役所前」</text><text x="405" y="373" font-size="18">ポートループ PL32</text><text x="45" y="430" font-size="17">フラワーロード</text><text x="45" y="465">南・海側 ↓</text></g><path d="M389 113H357V424H395" fill="none" stroke="#00858e" stroke-width="9" stroke-linejoin="round"></path><path d="m380 410 18 14-18 14" fill="none" stroke="#00858e" stroke-width="6"></path><circle cx="358" cy="265" r="8" fill="#e39c37"></circle><circle cx="358" cy="366" r="8" fill="#e39c37"></circle><text x="355" y="225" fill="#007480" font-size="17">横断歩道を渡る</text></svg>
       </details>
     </li>
 
@@ -519,6 +537,18 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   stButtons.forEach(b => b.addEventListener('click', () => showStation(b.dataset.station)));
   const initialStation = document.querySelector('.stations button[aria-pressed="true"][data-station]');
   if (initialStation) showStation(initialStation.dataset.station);
+
+  // 駅切替を促す本文中リンク（例：「阪急の案内をご覧ください」）
+  document.querySelectorAll('a[data-goto-station]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const station = a.dataset.gotoStation;
+      showStation(station);
+      // 該当パネルまでスクロール
+      const target = document.querySelector('.station-panel[data-panel="' + station + '"]');
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   // トップタブ（参加者／大阪）の切替
   const tabButtons = document.querySelectorAll('nav [role="tab"][data-tab]');
