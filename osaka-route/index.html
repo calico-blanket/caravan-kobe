@@ -51,16 +51,31 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   .address div[style*="grid-template-columns:1fr 1fr"],
   section div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
+
+@media print{
+  body{background:white;font-size:12pt}
+  header{background:white!important;color:#0a2436;padding:10px 0 16px;border-bottom:3px solid #0a2436}
+  header::before,header::after{display:none}
+  header .sub{color:#0a2436}
+  header .date,header button,header p.note{display:none}
+  section{padding:14px 0;break-inside:avoid}
+  .tips,.link-callout{border:1px solid #0a2436;background:white}
+  a{color:#0a2436;text-decoration:underline}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555;word-break:break-all}
+  figure img{max-height:260px}
+  footer{background:white}
+  main{max-width:100%}
+}
 </style></head>
 <body>
 <main>
 
 <header>
-  <span class="eyebrow"><span class="dot"></span>ACCESS GUIDE ｜ 大阪会場</span>
   <h1>全国キャラバン 大阪会場への道案内</h1>
   <p class="sub">大阪・梅田 → 西梅田（四つ橋線） → 本町駅・肥後橋駅 → 会場（大阪科学技術センター）</p>
   <span class="date">9 / 19 <small style="letter-spacing:.1em">2026 SAT</small></span>
-  <button type="button">印刷 / PDF</button>
+  <button type="button" onclick="window.print()">印刷 / PDF</button>
+  <p class="note" style="position:relative;margin:10px 0 0;color:#bcd6d8;font-size:13px">（サポーター作成、非公式資料）</p>
 </header>
 
 <section class="intro">
@@ -181,7 +196,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
 <footer style="padding:32px 44px;background:#f0f5f8">
   <h2 style="font-size:20px">情報の根拠と確認日</h2>
   <p style="font-size:14px">情報確認日：2026年9月13日。</p>
-  <p class="note" style="margin-top:14px">現地の写真や情報をお寄せくださったrano_兵庫さん、おにぎりさんのおかげで作成できました。あまえて監修までお願いしてしまいました。本当に有難うございました。少しでも参加される方のお役にたてば幸いです。</p>
+  <p class="note" style="margin-top:14px">現地の写真や情報と多くの助言をお寄せくださったrano_兵庫さん、おにぎりさんのおかげで作成できました。本当に有難うございました。少しでも参加される方のお役にたてば幸いです。（文責：猫柄毛布）</p>
 </footer>
 
 </main>
