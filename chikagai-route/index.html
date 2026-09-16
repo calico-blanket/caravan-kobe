@@ -76,6 +76,9 @@ details:not([open]) .disclosure-button .action::before{content:'開く'}
 /* 注意喚起の赤字（重要な警告用） */
 .warn,.note.warn{color:#c62828;font-weight:bold}
 
+/* 変更・停止となった経路情報の取り消し線 */
+.strike{text-decoration:line-through;text-decoration-color:#c62828;color:#8a8f98}
+
 /* 画像上に位置マーカーを重ねるためのラッパ */
 .image-annotate{position:relative;display:block;line-height:0}
 .image-annotate img{width:100%;height:auto;display:block}
@@ -118,7 +121,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
   <h1>研修会場への道案内（地上ルート以外）</h1>
   <h2 style="margin-top:20px">この案内の使い方</h2>
   <p>この案内では、到着駅または到着地から、<strong>地下街（さんちか）を通り、国際会館で地上へ出て、三宮研修センターに至る道順</strong>を記しています。<br/><span class="warn">工事のため、地下街から三宮研修センターに直接には行けません。</span></p>
-  <p class="note">※新神戸駅からポートループバスに乗る場合は、地下街を通らず三宮研修センターまで直結です。</p>
+  <p class="note">※ 新神戸駅からシティーループバスに乗る場合は、三宮研修センター向かいの市役所前に到着することができます。</p>
   <p>道順は、後に出てくる「<a href="#station-select">01 到着した駅を選ぶ</a>」で到着した駅別に確認することができます。</p>
   <aside id="construction-map">
     <strong class="warn">現在、三宮駅周辺では大規模な工事が継続中です。</strong>
@@ -152,7 +155,7 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     <button aria-pressed="false" role="radio" aria-checked="false" data-station="subway">新神戸・地下鉄 三宮<small>東改札 → さんちか（新神戸はバス直行も）</small></button>
     <button aria-pressed="false" role="radio" aria-checked="false" data-station="port">神戸空港（ポートライナー）・他市バス<small>三宮駅 → ミント神戸南端EV → さんちか</small></button>
   </div>
-  <p class="note">※このプロトタイプは JR三ノ宮、阪神 神戸三宮、阪急 神戸三宮、新神戸・地下鉄 三宮、神戸空港（ポートライナー）・他市バス の5経路で確認できます。海岸線 三宮・花時計前からのご案内は用意していません。</p>
+  <p class="note">※ JR三ノ宮、阪神 神戸三宮、阪急 神戸三宮、新神戸・地下鉄 三宮、神戸空港（ポートライナー）・他市バス の5経路で確認できます。海岸線 三宮・花時計前からのご案内は用意していません。</p>
 </section>
 
 <section aria-labelledby="section-station-route">
@@ -247,7 +250,8 @@ summary:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #b8
     <details open style="background:#fff4de;border-left:5px solid #b87908;padding:14px 18px;margin-bottom:22px">
       <summary style="cursor:pointer;font-weight:bold">新幹線で新神戸についた方へ</summary>
       <p>三宮までは市営地下鉄 西神・山手線で1駅（西神中央・名谷方面）です。三宮駅で降りたあとは、下のカード01から進んでください。</p>
-      <p>なお、<strong>地下街を通らず会場前まで直行する連節バス「ポートループ」</strong>もあります。新神戸駅前から乗り換えなしで「市役所・東遊園地前」まで約16分、そこが会場正面です。時刻表・ルートは<a href="https://www.shinkibus.co.jp/bus/portloop/">神姫バス・ポートループ（外部サイト）</a>でご確認ください。</p>
+      <p>なお、地下街を通らず会場近くまで直行する神姫バス「シティループ」もあります。新神戸駅から乗換なして、「市役所前」まで約13分、向かいが会場です。</p>
+      <p class="note">また、乗り場や時刻表などは、<a href="https://www.shinkibus.co.jp/bus/cityloop/">神姫バス・シティーループのHP</a>でご確認ください。</p>
     </details>
 
     <ol class="journey">
