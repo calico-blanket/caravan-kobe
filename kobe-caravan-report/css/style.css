@@ -1,0 +1,143 @@
+/* ==================== 01. 色と基本設定：全体の色変更はここ ==================== */
+:root {
+  --ink: #203b32;
+  --muted: #52685e;
+  --green: #226846;
+  --pale: #eaf5ed;
+  --line: #cbded1;
+  --paper: #fff;
+  --width: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "BIZ UDPGothic", "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; font-size: 16px; line-height: 1.95; overflow-wrap: anywhere; }
+a { color: var(--green); text-underline-offset: 5px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid #b56722; outline-offset: 5px; }
+button { font: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; height: auto; }
+figure, p { margin: 0 0 1.2rem; }
+h1, h2, h3, h4 { line-height: 1.5; text-wrap: balance; }
+h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); margin: 0 0 1.8rem; letter-spacing: .025em; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.2rem; margin: .65rem 0 1rem; }
+.wrap { width: min(var(--width), calc(100% - 40px)); margin-inline: auto; }
+.section { padding-block: 64px; }
+.eyebrow { font-size: .875rem; font-weight: 700; letter-spacing: .1em; color: var(--green); margin-bottom: .85rem; }
+.note, figcaption { font-size: .875rem; line-height: 1.8; color: var(--muted); }
+.section-intro { max-width: 770px; margin-bottom: 2rem; }
+.skip-link { position: absolute; top: -100px; left: 16px; padding: 12px; background: white; z-index: 10; }
+.skip-link:focus { top: 10px; }
+
+/* ==================== 02. 表紙・目次 ==================== */
+.site-header { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; border-bottom: 1px solid var(--line); }
+.site-name { color: var(--ink); text-decoration: none; font-weight: 700; font-size: .95rem; }
+.site-name span { display: block; font-size: .8rem; font-weight: 400; }
+.edition { font-size: .8rem; color: var(--muted); }
+.hero { padding-top: 38px; }
+.date { font-size: 1.3rem; letter-spacing: .045em; font-weight: 600; }
+.date span { color: #7b9e89; }
+.date small { display: block; font-size: .875rem; font-weight: 400; }
+h1 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(2.3rem, 4.4vw, 3.6rem); line-height: 1.45; letter-spacing: .02em; margin: 18px 0 24px; }
+.lead { max-width: 31em; }
+.text-link { display: inline-flex; gap: 2rem; padding-block: 8px; font-weight: 700; margin-bottom: 25px; }
+.hero-photo { margin-bottom: 20px; }
+.hero-photo img { width: 100%; }
+figcaption { margin-top: 10px; }
+.photo-link { display: block; position: relative; cursor: zoom-in; }
+.photo-hint { position: absolute; right: 12px; bottom: 12px; background: #fff; padding: 4px 12px; font-size: .875rem; color: var(--ink); border-radius: 3px; }
+.toc { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding-block: 12px; }
+.toc a { font-size: .875rem; padding-block: 8px; text-decoration: none; }
+
+/* ==================== 03. 開催概要・タイムライン・冒頭写真 ==================== */
+.event-facts { margin: 28px 0 12px; }
+.event-facts div { display: grid; grid-template-columns: 6.5rem 1fr; padding: 10px 0; border-bottom: 1px solid var(--line); }
+dt { color: var(--muted); font-size: .875rem; }
+dd { margin: 0; }
+.source-ref { font-size: .875rem; white-space: nowrap; }
+.timeline { list-style: none; margin: 30px 0 0 10px; padding: 0 0 0 28px; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding-bottom: 22px; }
+.timeline li::before { content: ""; position: absolute; width: 12px; height: 12px; background: var(--green); border-radius: 50%; left: -35px; top: 9px; }
+.timeline h3 { margin: 5px 0 10px; }
+.step { font-size: .875rem; color: var(--green); font-weight: 700; }
+.opening-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+.opening-photos img { width: 100%; max-height: 390px; object-fit: cover; object-position: center 65%; }
+
+/* ==================== 04. 写真と説明：スマホでは写真→説明 ==================== */
+.workshop-band { background: var(--pale); }
+.photo-story { padding-block: 22px 36px; border-bottom: 1px solid var(--line); margin-bottom: 30px; }
+.photo-story:last-of-type { border: 0; }
+.photo-story img { width: 100%; }
+.photo-story h3 { font-size: 1.4rem; margin: 0 0 20px; }
+.story-number { font-family: Georgia, serif; color: var(--green); font-size: 2.4rem; line-height: 1; margin: 14px 0; }
+.tips { padding-left: 1.4em; }
+.glossary, .hyogo-note { background: white; padding: 24px; max-width: 850px; margin: 12px auto 0; }
+.glossary { border-left: 4px solid var(--green); }
+.hyogo-note { margin-top: 22px; border: 1px solid var(--line); }
+.glossary h3, .hyogo-note h3 { margin-top: 0; }
+.glossary p:last-child, .hyogo-note p:last-child { margin-bottom: 0; }
+
+/* ==================== 05. 投稿カード ==================== */
+.group-title { border-bottom: 1px solid var(--line); padding-bottom: 15px; margin-top: 36px; }
+.question-note, .follow-up { padding: 24px; margin: 0 0 20px; border-radius: 5px; }
+.question-note { background: var(--pale); border-left: 4px solid var(--green); }
+.follow-up { border: 1px solid var(--line); background: #fff; }
+.question-note h4, .follow-up h4 { margin-top: .65rem; }
+.slido-questions { margin: 0 0 24px; padding-left: 1.4em; }
+.slido-questions li { margin-bottom: 8px; }
+.answer-notes { display: grid; gap: 14px; }
+.answer-notes section { background: rgb(255 255 255 / 75%); padding: 18px; border: 1px solid var(--line); }
+.answer-notes h5 { color: var(--green); font-size: 1rem; margin: 0 0 8px; }
+.answer-notes p { margin: 0; }
+.source-buttons { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 0; }
+.source-buttons a { display: inline-block; padding-block: 6px; font-weight: 700; }
+.voice-grid { display: grid; gap: 20px; }
+.voice-card { display: flex; flex-direction: column; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 5px; }
+.tag { color: var(--green); font-size: .875rem; font-weight: 700; margin-bottom: 0; }
+.voice-card footer { margin-top: auto; border-top: 1px solid var(--line); padding-top: 16px; font-size: .875rem; }
+.voice-card footer p { margin-bottom: 10px; font-weight: 700; }
+.voice-card footer span, .voice-card time { display: block; font-weight: 400; color: var(--muted); }
+.voice-card time { font-size: .8rem; }
+.voice-card footer a { display: inline-block; padding-block: 6px; }
+.voice-card footer a span { display: inline; color: inherit; }
+
+/* ==================== 06. 出典とフッター ==================== */
+.sources { border-top: 2px solid var(--green); max-width: 850px; }
+.sources li { margin-bottom: 14px; }
+.sources ul { padding-left: 1.3em; }
+.site-footer { border-top: 1px solid var(--line); padding-block: 24px 36px; font-size: .875rem; }
+.site-footer span { display: block; color: var(--muted); }
+
+/* ==================== 07. 写真拡大：標準dialogがフォーカスを保持 ==================== */
+dialog { border: 0; padding: 16px; width: min(1200px, 96vw); max-height: 94vh; color: var(--ink); border-radius: 5px; }
+dialog:not([open]) { display: none; }
+dialog::backdrop { background: rgb(10 25 18 / 85%); }
+dialog form { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.close-button { border: 1px solid var(--line); color: var(--ink); background: white; padding: 8px 18px; border-radius: 3px; min-height: 44px; }
+dialog img { margin: auto; max-height: 73vh; width: auto; object-fit: contain; }
+dialog p { font-size: .875rem; margin: 12px 0 0; }
+body.photo-open { overflow: hidden; }
+
+/* ==================== 08. タブレット・PC ==================== */
+@media (min-width: 760px) {
+  .section { padding-block: 86px; }
+  .site-name span { display: inline; margin-left: 14px; }
+  .hero { display: grid; grid-template-columns: .9fr 1.2fr; align-items: center; gap: 40px; padding-block: 60px 35px; }
+  .hero-photo img { aspect-ratio: 1.05; object-fit: cover; object-position: center 70%; }
+  .hero-photo { margin: 0; }
+  .toc { display: flex; justify-content: space-around; }
+  .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .timeline { margin-top: 5px; }
+  .opening-photos { max-width: 760px; margin-inline: auto; gap: 28px; }
+  .photo-story { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center; }
+  .voice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .site-footer { display: flex; justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  .toc, .text-link, .photo-hint, .site-footer a, dialog { display: none !important; }
+  .wrap { width: 100%; }
+  .section { padding-block: 22px; }
+  .voice-card, .question-note, .follow-up, .hyogo-note, .answer-notes section, figure { break-inside: avoid; }
+  body { font-size: 11pt; }
+}
