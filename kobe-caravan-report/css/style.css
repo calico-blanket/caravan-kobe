@@ -40,7 +40,6 @@ h4 { font-size: 1.2rem; margin: .65rem 0 1rem; }
 .date small { display: block; font-size: .875rem; font-weight: 400; }
 h1 { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: clamp(2.3rem, 4.4vw, 3.6rem); line-height: 1.45; letter-spacing: .02em; margin: 18px 0 24px; }
 .lead { max-width: 31em; }
-.text-link { display: inline-flex; gap: 2rem; padding-block: 8px; font-weight: 700; margin-bottom: 25px; }
 .hero-photo { margin-bottom: 20px; }
 .hero-photo img { width: 100%; }
 figcaption { margin-top: 10px; }
@@ -62,6 +61,8 @@ dd { margin: 0; }
 .step { font-size: .875rem; color: var(--green); font-weight: 700; }
 .opening-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
 .opening-photos img { width: 100%; max-height: 390px; object-fit: cover; object-position: center 65%; }
+.venue-wide { max-width: 900px; margin: 28px auto 0; }
+.venue-wide img { width: 100%; }
 
 /* ==================== 04. 写真と説明：スマホでは写真→説明 ==================== */
 .workshop-band { background: var(--pale); }
@@ -71,28 +72,55 @@ dd { margin: 0; }
 .photo-story h3 { font-size: 1.4rem; margin: 0 0 20px; }
 .story-number { font-family: Georgia, serif; color: var(--green); font-size: 2.4rem; line-height: 1; margin: 14px 0; }
 .tips { padding-left: 1.4em; }
-.glossary, .hyogo-note { background: white; padding: 24px; max-width: 850px; margin: 12px auto 0; }
-.glossary { border-left: 4px solid var(--green); }
+.workshop-voices { max-width: 850px; margin: 30px auto 0; padding-top: 22px; border-top: 1px solid var(--line); }
+.hyogo-note { background: white; padding: 24px; max-width: 850px; margin: 12px auto 0; }
 .hyogo-note { margin-top: 22px; border: 1px solid var(--line); }
-.glossary h3, .hyogo-note h3 { margin-top: 0; }
-.glossary p:last-child, .hyogo-note p:last-child { margin-bottom: 0; }
+.hyogo-catchphrase { position: relative; width: fit-content; max-width: 100%; margin: 26px auto 8px; padding: .45em .8em; border: 2px solid var(--green); border-radius: 8px; background: #f3faf4; box-shadow: 6px 6px 0 #d7ead8; color: var(--green); font-family: "Hiragino Maru Gothic ProN", "BIZ UDPGothic", "Yu Gothic", sans-serif; font-size: clamp(1.25rem, 4.2vw, 2.05rem); font-weight: 900; line-height: 1.5; letter-spacing: .04em; text-align: center; transform: rotate(-1deg); }
+.hyogo-catchphrase::before { content: "✦"; position: absolute; top: -.8em; right: -.45em; color: #e2a728; font-size: .9em; }
+.hyogo-catchphrase span { background: linear-gradient(transparent 63%, #fce994 63%); }
+.hyogo-note h3 { margin-top: 0; }
+.hyogo-note p:last-child { margin-bottom: 0; }
+.handout-block { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.handout-block h3 { margin-top: .35rem; }
+.handout-gallery { display: grid; gap: 18px; margin-top: 22px; }
+.handout-gallery figure { margin-bottom: 0; }
+.handout-gallery img { width: 100%; border: 1px solid var(--line); }
 
 /* ==================== 05. 投稿カード ==================== */
 .group-title { border-bottom: 1px solid var(--line); padding-bottom: 15px; margin-top: 36px; }
 .question-note, .follow-up { padding: 24px; margin: 0 0 20px; border-radius: 5px; }
 .question-note { background: var(--pale); border-left: 4px solid var(--green); }
 .follow-up { border: 1px solid var(--line); background: #fff; }
-.question-note h4, .follow-up h4 { margin-top: .65rem; }
-.slido-questions { margin: 0 0 24px; padding-left: 1.4em; }
-.slido-questions li { margin-bottom: 8px; }
-.answer-notes { display: grid; gap: 14px; }
-.answer-notes section { background: rgb(255 255 255 / 75%); padding: 18px; border: 1px solid var(--line); }
-.answer-notes h5 { color: var(--green); font-size: 1rem; margin: 0 0 8px; }
-.answer-notes p { margin: 0; }
+.question-note h3, .follow-up h5 { margin-top: .65rem; }
+/* 質問・回答・対応する投稿を1件ずつ同じカードに収めます。 */
+.qa-list { display: grid; gap: 18px; }
+.qa-item { padding: 20px; border: 1px solid var(--line); border-radius: 5px; background: #fff; }
+.qa-item h4 { margin: 0 0 12px; color: var(--green); font-size: 1.05rem; }
+.qa-item h4::before { content: "Q. "; color: #b56722; }
+.qa-item > p { margin-bottom: 0; }
+.qa-unrecorded { color: var(--muted); font-size: .875rem; }
+.qa-related { max-width: 650px; margin: 20px auto 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.qa-related .twitter-tweet { margin: 12px auto 0 !important; }
+.qa-item .follow-up { margin: 22px 0 0; padding: 18px; background: var(--pale); }
+.qa-item .follow-up p:last-child { margin-bottom: 0; }
 .source-buttons { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-bottom: 0; }
 .source-buttons a { display: inline-block; padding-block: 6px; font-weight: 700; }
 .voice-grid { display: grid; gap: 20px; }
 .voice-card { display: flex; flex-direction: column; padding: 24px; background: #fff; border: 1px solid var(--line); border-radius: 5px; }
+.machine-embed { padding: 18px; background: #fff; border: 1px solid var(--line); border-radius: 5px; }
+.machine-embed .twitter-tweet { margin: 12px auto 0 !important; }
+.participant-embed { max-width: 850px; margin: 22px auto 0; }
+#voice-2 { margin-bottom: 24px; }
+.attendance-note { margin: 16px 0 0; padding: 14px 18px; background: var(--pale); border-left: 4px solid var(--green); }
+/* Threads投稿は本文を常時表示し、元投稿リンクも残します。 */
+.threads-note { margin-top: 20px; border: 1px solid var(--line); border-radius: 5px; background: #fff; }
+.threads-note h4 { padding: 18px 20px 0; margin: 0; color: var(--green); }
+.threads-note h4 span { display: block; margin-top: 4px; color: var(--muted); font-size: .85rem; font-weight: 400; }
+.threads-note-body { padding: 12px 20px 20px; }
+.threads-note-body > p:first-child { font-size: .875rem; color: var(--muted); }
+.threads-text-body { max-width: 658px; margin: 16px auto; padding: 4px 18px; border-left: 3px solid var(--line); }
+.threads-text-body p { line-height: 1.75; }
+.threads-fallback { margin-bottom: 0; font-size: .875rem; }
 .tag { color: var(--green); font-size: .875rem; font-weight: 700; margin-bottom: 0; }
 .voice-card footer { margin-top: auto; border-top: 1px solid var(--line); padding-top: 16px; font-size: .875rem; }
 .voice-card footer p { margin-bottom: 10px; font-weight: 700; }
@@ -130,14 +158,18 @@ body.photo-open { overflow: hidden; }
   .timeline { margin-top: 5px; }
   .opening-photos { max-width: 760px; margin-inline: auto; gap: 28px; }
   .photo-story { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; align-items: center; }
+  .handout-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .voice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .site-footer { display: flex; justify-content: space-between; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print {
-  .toc, .text-link, .photo-hint, .site-footer a, dialog { display: none !important; }
+  .toc, .photo-hint, .site-footer a, dialog { display: none !important; }
   .wrap { width: 100%; }
   .section { padding-block: 22px; }
-  .voice-card, .question-note, .follow-up, .hyogo-note, .answer-notes section, figure { break-inside: avoid; }
+  .voice-card, .qa-item, .follow-up, .hyogo-note, figure { break-inside: avoid; }
   body { font-size: 11pt; }
 }
+
+
+
